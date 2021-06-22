@@ -7,9 +7,9 @@ test <- cbind(test, rbind(read.table("data/UCI HAR Dataset/test/y_test.txt"), re
 
 test <- cbind(test, rbind(read.table("data/UCI HAR Dataset/test/subject_test.txt"), read.table("data/UCI HAR Dataset/train/subject_train.txt")))
 
-#for step 5
+#for step #5
 
-newStep <- data.table::data.table(test)
+newStep <- cbind(test)
 
 #Step 2: Extracting mean and standard deviation from test dataset
 
@@ -20,9 +20,9 @@ sdTest <- sapply(test, sd)
 #Step 3: Converting the Y_test.txt column to their appropriate activity 
 activityLabel <- read.table("data/UCI HAR Dataset/activity_labels.txt")
 
-for (label in 1: length(test[[562]])) {
-  
-  test[[562]][[label]] <- activityLabel[[2]][test[[562]][[label]]]
+for (label in 1: nrow(test)) {
+  index <- test[[562]][[label]]
+  test[[562]][[label]] <- as.character(activityLabel[[2]][[as.integer(index)]])
   
 }
 
@@ -37,11 +37,29 @@ names(test)[562:563] <- c("Activity by Subject", "Subject Who Participated")
 #Step 5: Creating a new dataset with averages of each column
 tidySet <- data.table::data.table()
 
-for (col in 1: ncol(test)) {
-  test[[col]] <- as.numeric(as.character(test[[col]]))
-  tidySet <- cbind(tidySet, mean(test[[col]]))
+
+
+for (item in unique(newStep[[562]])) {
+  
+  meanSol <- vector()
+  for (col in 1:ncol(newStep)) {
+    meanSol <- c(meanSol, mean(newStep[[col]][newStep[[562]] == as.integer(item)]))
+  }
+  tidySet <- cbind(tidySet,meanSol)
 }
-names(tidySet) <- names(test)
+
+for (item in unique(newStep[[563]])) {
+  meanSol <- vector()
+  
+  for (col in 1:ncol(newStep)) {
+    meanSol <- c(meanSol, mean(newStep[[col]][newStep[[563]] == as.integer(item)]))
+  }
+  tidySet <- cbind(tidySet,meanSol)
+}
+
+names(tidySet)[1:length(unique(newStep[[562]]))] <- paste("Activity #",as.character(unique(newStep[[562]])), sep = "")
+
+names(tidySet)[(length(unique(newStep[[562]]))+1): ncol(tidySet)] <- paste("Subject #",as.character(unique(newStep[[563]])), sep = "")
 
 
 
