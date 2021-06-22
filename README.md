@@ -11,7 +11,7 @@
 ## In this GitHub repo, you will find:
 
  - ### A [run_analysis.R](https://github.com/RitCh123/tidydata/blob/main/run_analysis.R) file that gives the code for processing, organizing, and cleaning the data from text files.
- - ### A [CodeBook.md](https://github.com/RitCh123/tidydata/blob/main/CodeBook.md) file that gives a thorough description of my code, variable usability, transformations in my code and that data, and additoinal necessary information.
+ - ### A [CodeBook.md](https://github.com/RitCh123/tidydata/blob/main/CodeBook.md) file that gives a thorough description of my code, variable usability, transformations in my code and that data, and additional necessary information.
  - ### A complete [tidy dataset](https://github.com/RitCh123/tidydata/blob/main/tidySet.txt) that gives the complete data set after processing and cleaning. This is the final result of the project (after step #5)
 
 
