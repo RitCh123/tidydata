@@ -20,7 +20,7 @@
 #### Activity Label reads the activity_label.txt file and converts to a data.table object. The table consists of two columns. The first column details the numbers for which the activity is associated with. The second column details the activity name (e.g "WALKING", "SITTING", etc.)
 
 ### Tidy Set
-####Tidy set is a variable that contains the tidy, independent set with the averages of all vectors (columns 1 to 561) as per different activity number and subject label (from 1 to 30). The subjects and activity numbers are in the columns while the vector averages are documented in the rows.
+#### Tidy set is a variable that contains the tidy, independent set with the averages of all vectors (columns 1 to 561) as per different activity number and subject label (from 1 to 30). The subjects and activity numbers are in the columns while the vector averages are documented in the rows.
 
 ### Mean Sol
 #### Mean sol is the variable that contains the averages of all vectors. I used rbind() to add all the averages to the dataset. The meanSol variable resets after every iteration of the loop. I used the loop of all the unique values of subject labels and activity numbers. 
